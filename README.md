@@ -1,3 +1,3 @@
 # PSP
-Programų sistemų testavimas
+Programų sistemų projektvimas
 Benas Kopūstas 2 grupė
