@@ -1,8 +1,15 @@
+package businessRequirementsTest;
+
+import businessRequirements.PasswordChecker;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class passwordCheckerTest {
+
+    PasswordChecker passwordChecker = new PasswordChecker();
 
     // Tests for checking password length
     @Test
@@ -31,32 +38,32 @@ class passwordCheckerTest {
 
     //Tests for checking if password has uppercase letter
     @Test
-    void passwordChecker_UppercaseLetterNotFound(){
+    void passwordChecker_UppercaseLetterNotFound() throws IOException {
         assertFalse(passwordChecker.hasUppercaseLetter("password"));
         //should return false, Uppercase letter not found
     }
 
     @Test
-    void passwordChecker_UppercaseLetterCorrect(){
+    void passwordChecker_UppercaseLetterCorrect() throws IOException{
         assertTrue(passwordChecker.hasUppercaseLetter("PassWord123"));
         //should return true, password contains at least 1 uppercase letter
     }
 
     //Tests for checking if password has special character
     @Test
-    void passwordChecker_SpecialCharacterNotFound(){
+    void passwordChecker_SpecialCharacterNotFound() throws IOException{
         assertFalse(passwordChecker.hasSpecialCharacter("password"));
         //should return false, no Special character found
     }
 
     @Test
-    void passwordChecker_SpecialCharacterFalse() {
+    void passwordChecker_SpecialCharacterFalse() throws IOException{
         assertFalse(passwordChecker.hasSpecialCharacter("pass|word123"));
         //should return false, special character is invalid
     }
 
     @Test
-    void passwordChecker_SpecialCharacterCorrect(){
+    void passwordChecker_SpecialCharacterCorrect() throws IOException{
         assertTrue(passwordChecker.hasSpecialCharacter("pass.word123"));
         //should return true, special character is valid
     }
