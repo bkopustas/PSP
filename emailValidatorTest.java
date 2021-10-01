@@ -1,8 +1,15 @@
+package businessRequirementsTest;
+
+import businessRequirements.EmailValidator;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class emailValidatorTest {
+
+    EmailValidator emailValidator = new EmailValidator();
 
     //Tests to check if email has @ symbol
     @Test
@@ -31,37 +38,37 @@ class emailValidatorTest {
 
     //Tests to check for invalid symbols
     @Test
-    void emailValidator_HasInvalidSymbolTrue(){
+    void emailValidator_HasInvalidSymbolTrue() throws IOException {
         assertFalse(emailValidator.hasInvalidSymbol("emily£willis@gmail.com"));
         //should return false, £ symbol is invalid
     }
 
     @Test
-    void emailValidator_HasInvalidSymbolFalse(){
+    void emailValidator_HasInvalidSymbolFalse() throws IOException {
         assertTrue(emailValidator.hasInvalidSymbol("johnny-bravo@mail.ru"));
         //should return true, - is valid
     }
 
     //Tests to check if domain and TLD are valid
     @Test
-    void emailValidator_DomainInvalid(){
+    void emailValidator_DomainInvalid() throws IOException{
         assertFalse(emailValidator.domainValidator("john@.com"));
         //should return false, domain invalid
     }
 
     @Test
-    void emailValidator_DomainValid(){
+    void emailValidator_DomainValid() throws IOException{
         assertTrue(emailValidator.domainValidator("john@mif.vu.lt"));
         //should return false, domain invalid
     }
 
     @Test
-    void emailValidator_TopLevelDomainInvalid(){
+    void emailValidator_TopLevelDomainInvalid() throws IOException{
         assertFalse(emailValidator.topLevelDomainValidator("michael@porche.4"));
     }
 
     @Test
-    void emailValidator_TopLevelDomainValid(){
+    void emailValidator_TopLevelDomainValid() throws IOException{
         assertTrue(emailValidator.topLevelDomainValidator("michael@nissan.com"));
     }
 }
